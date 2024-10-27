@@ -3,10 +3,9 @@ import { LinhaLivro } from "../componentes/LinhaLivro";
 import { Livro } from "../classes/modelo/Livro";
 import Menu from "../componentes/Menu";
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL 
-  ? process.env.NEXT_PUBLIC_API_URL 
-  : 'http://localhost:3000/api/livros';
-
+const baseUrl = process.env.NODE_ENV === 'production' 
+    ? 'https://livros-next-app.vercel.app/api/livros'
+    : 'http://localhost:3000/api/livros';
 const LivroLista: React.FC = () => {
     const [livros, setLivros] = useState<Livro[]>([]);
     const [carregado, setCarregado] = useState(false);
